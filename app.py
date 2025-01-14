@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 import openai
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-# Replace with your OpenAI API key
-openai.api_key = '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'
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/simplify', methods=['POST'])
 def simplify_text():
