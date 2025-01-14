@@ -13,7 +13,7 @@ dyslexiaModeButton.style.cursor = "pointer";
 // Inject CSS styles for dyslexia mode
 const style = document.createElement("style");
 style.textContent = `
-    .dys_mode {
+    #dys_mode {
         font-family: 'OpenDyslexic', Arial, sans-serif;
         line-height: 1.6;
         letter-spacing: 0.5px;

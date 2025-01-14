@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
         chrome.tabs.query({active: true,currentWindow: true}, (tabs) => {
             const activeTab = tabs[0];
-            chrome.tabs.sendMessage(activeTab.is, { action: "enableDyslexiaMode" });
+            chrome.tabs.sendMessage(activeTab.id, { action: "enableDyslexiaMode" });
         });
         output.textContent = "Dyslexia Mode Enabled!";
     })
