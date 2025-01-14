@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Clarify",
+    "version": "1.0.0",
+    "description": "AI-powered learning for users with language learning impairments.",
+    "action": {
+        "default_popup": "hello.html"
+    },
+    "author": "maya.oum02@gmail.com",
+    "content_scripts": [
+        {
+            "js": ["app.js"],
+            "css": ["style.css"]
+        }
+    ]
+  }
