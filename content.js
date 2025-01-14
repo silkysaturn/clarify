@@ -2,15 +2,15 @@
 const style = document.createElement("style");
 style.textContent = `
     .dys_mode {
-        font-family: 'Times New Roman', Arial, sans-serif !important;
+        font-family: 'Century Gothic', Arial, sans-serif !important;
         line-height: 1.6 !important;
         letter-spacing: 0.5px !important;
-        background-color: #f0e68c !important;
+        background-color: #FFFDD0 !important;
         color: #3a322d !important;
     }
 
     .dys_mode * {
-        font-family: 'Times New Roman', Arial, sans-serif !important;
+        font-family: 'Century Gothic', Arial, sans-serif !important;
         line-height: 1.6 !important;
         letter-spacing: 0.5px !important;
         color: #3a322d !important;
