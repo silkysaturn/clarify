@@ -6,13 +6,12 @@ style.textContent = `
         font-family: 'Century Gothic', Arial, sans-serif;
         line-height: 1.6;
         letter-spacing: 0.5px;
-        background-color: #FFFDD0;
-        color: #3a322d;
+        background-color: #f0e68c;  /* Light khaki background color */
+        color: #3a322d;  /* Dark text color */
     }
 `;
 document.head.appendChild(style);
 
-document.head.appendChild(style);
 
 // Variable to keep track of whether dyslexia mode is enabled
 let isDyslexiaMode = false;
