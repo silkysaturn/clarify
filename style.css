@@ -1,6 +1,18 @@
-.dyslexia-mode {
-    font-family: sans-serif !important;
-    background-color: #f5f5dc !important;
-    color: #333 !important;
-    line-height: 1.6 !important;
+.body {
+    font-family: "Century Gothic", Calibri, sans-serif;
+    font-size: 1.2em;
+    color: #1C0F13;
+}
+
+#dys_btn {
+    color: #1C0F13;
+    background-color: #E2E2E2;
+    max-width: fit-content;
+    border: 2px solid 1C0F13;
+    border-radius: 10%;
+}
+
+#dys_btn:active {
+    background-color: #B7CECE;
+    color: #1C0F13;
 }
