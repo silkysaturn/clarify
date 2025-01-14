@@ -1,14 +1,22 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarify</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h3>Welcome to Clarify! 🔎</h3>
-    <button id="dys_btn">Dyslexia Mode</button>
-    <p id="output"></p>
+    <div class="popup">
+        <h3>Welcome to Clarify! 🔎</h3>
+        <button id="dys_btn">Reading Mode</button>
+        <p id="output"></p>
+        
+        <div class="api-section">
+            <input type="password" id="api_key" placeholder="Enter OpenAI API Key">
+            <button id="save_key">Save API Key</button>
+        </div>
+        
+        <p class="instructions">Select any text and click 'Simplify' to get an AI-simplified version!</p>
+    </div>
 
     <script src="popup.js" defer></script>
 </body> 

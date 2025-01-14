@@ -3,7 +3,10 @@
     "name": "Clarify",
     "version": "1.0",
     "description": "Make websites easier to read or study",
-    "permissions": ["activeTab"],
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
     "action": {
         "default_popup": "popup.html"
     },
@@ -15,6 +18,7 @@
     ],
     "host_permissions": [
         "http://*/*",
-        "https://*/*"
+        "https://*/*",
+        "https://api.openai.com/*"
     ]
 }
