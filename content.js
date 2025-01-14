@@ -3,9 +3,11 @@ const style = document.createElement("style");
 style.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Open+Dyslexic&display=swap');
     .dys_mode {
-        font-family: 'OpenDyslexic', Arial, sans-serif;
+        font-family: 'Century Gothic', Arial, sans-serif;
         line-height: 1.6;
         letter-spacing: 0.5px;
+        background-color: #FFFDD0;
+        color: #3a322d;
     }
 `;
 document.head.appendChild(style);
