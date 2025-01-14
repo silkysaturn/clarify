@@ -55,4 +55,7 @@ chrome.runtime.onMessage.addListener((message) => {
     }
 });
 
+<<<<<<< HEAD
+>>>>>>> parent of 0340309 (debugging)
+=======
 >>>>>>> parent of 0340309 (debugging)
