@@ -3,7 +3,7 @@ const style = document.createElement("style");
 style.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Open+Dyslexic&display=swap');
     .dys_mode {
-        font-family: 'Century Gothic', Arial, sans-serif;
+        font-family: 'Times New Roman', Arial, sans-serif;
         line-height: 1.6;
         letter-spacing: 0.5px;
         background-color: #f0e68c;  /* Light khaki background color */
@@ -30,7 +30,7 @@ let isDyslexiaMode = false;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "enableDyslexiaMode") {
-        document.body.style.fontFamily = "'OpenDyslexic', Arial, sans-serif";  // Example action
+        document.body.style.fontFamily = "'Times New Roman', Arial, sans-serif";  // Example action
         document.body.style.backgroundColor = "#f0e68c";  // Light khaki background color
         document.body.style.color = "#3a322d";  // Dark text color
         document.body.style.lineHeight = "1.6";
