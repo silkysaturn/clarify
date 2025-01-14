@@ -2,15 +2,36 @@
     "manifest_version": 3,
     "name": "Clarify",
     "version": "1.0.0",
-    "description": "AI-powered learning for users with language learning impairments.",
-    "action": {
-        "default_popup": "hello.html"
+    "description": "Simplify online learning with AI-powered tools for text simplification, pronunciation, and more.",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage",
+      "contextMenus"
+    ],
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
     },
-    "author": "maya.oum02@gmail.com",
+    "action": {
+      "default_popup": "popup.html"
+    },
     "content_scripts": [
-        {
-            "js": ["app.js"],
-            "css": ["style.css"]
-        }
-    ]
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["icons/*"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "options_page": "options.html"
   }
+  
