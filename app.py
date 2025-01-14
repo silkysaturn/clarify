@@ -1,30 +1,41 @@
 from flask import Flask, request, jsonify
-<<<<<<< HEAD
+from flask_cors import CORS
 import openai
 from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
+# Load environment variables
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-=======
-from openai import simplify  # You can use OpenAI or any AI-based library for simplification
-
-app = Flask(__name__)
-
->>>>>>> parent of 6dbfd1a (Update app.py)
 @app.route('/simplify', methods=['POST'])
 def simplify_text():
-    data = request.get_json()
-    text = data.get('text', '')
-    if not text:
-        return jsonify({'error': 'No text provided'}), 400
+    try:
+        data = request.get_json()
+        text = data.get('text', '')
+        
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+
+        # Call OpenAI API
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that simplifies complex text. Keep the core meaning but use simpler words and shorter sentences."},
+                {"role": "user", "content": f"Please simplify this text: {text}"}
+            ],
+            temperature=0.7
+        )
+        
+        simplified = response.choices[0].message['content']
+        return jsonify({"simplified": simplified})
     
-    simplified_text = simplify(text)  # Simplify text using AI or algorithm
-    return jsonify({"simplified": simplified_text})
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
-

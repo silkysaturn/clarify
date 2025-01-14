@@ -12,8 +12,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "simplifyText") {
         const selectedText = info.selectionText;
         
-        // Replace with your actual server endpoint
-        fetch('https://nosu-ai-hackathon.onrender.com/simplify', {
+        fetch('http://127.0.0.1:5000/simplify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
