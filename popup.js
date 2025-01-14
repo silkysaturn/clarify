@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const output = document.getElementById("output");
 
     button.addEventListener("click", () => {
-        chrome.tabs.query({active: true,currentWindow: true}, (tabs) => {
+        console.log("Button clicked! Sending message...");
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const activeTab = tabs[0];
-            chrome.tabs.sendMessage(activeTab.id, { action: "enableDyslexiaMode" });
+            chrome.tabs.sendMessage(activeTab.id, { action: "enableDyslexiaMode" }, (response) => {
+                console.log("Response from content script:", response);
+            });
         });
         output.textContent = "Dyslexia Mode Enabled!";
-    })
+    });
 });
