@@ -1,4 +1,3 @@
-// Add Dyslexia Mode Toggle Button
 const toggleDyslexiaMode = document.createElement("button");
 toggleDyslexiaMode.textContent = "Toggle Dyslexia Mode";
 toggleDyslexiaMode.style.position = "fixed";
@@ -48,9 +47,9 @@ simplifyButton.addEventListener("click", () => {
     }
 });
 
-// Listen for Messages from Background Script
 chrome.runtime.onMessage.addListener((message) => {
     if (message.action === "displaySimplifiedText") {
         alert(`Simplified Text: ${message.text}`);
     }
 });
+
