@@ -10,16 +10,6 @@ dyslexiaModeButton.style.border = "none";
 dyslexiaModeButton.style.fontSize = "16px";
 dyslexiaModeButton.style.cursor = "pointer";
 
-// Inject CSS styles for dyslexia mode
-const style = document.createElement("style");
-style.textContent = `
-    #dys_mode {
-        font-family: 'OpenDyslexic', Arial, sans-serif;
-        line-height: 1.6;
-        letter-spacing: 0.5px;
-    }
-`;
-document.head.appendChild(style);
 
 
 // Append button to the body
@@ -39,11 +29,10 @@ dyslexiaModeButton.addEventListener("click", () => {
     }
 });
 
-// Listen for the message from popup.js to enable dyslexia mode
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "enableDyslexiaMode") {
-        // Enable dyslexia mode when the message is received
-        isDyslexiaMode = true;
-        document.body.classList.add("dys_mode");
+        document.body.style.fontFamily = "'OpenDyslexic', Arial, sans-serif";  // Example action
+        console.log("Dyslexia Mode enabled!");
+        sendResponse({ status: "enabled" });  // Optional response
     }
 });
