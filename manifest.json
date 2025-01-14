@@ -5,6 +5,7 @@
     "description": "Make websites easier to read or study",
     "permissions": [
         "activeTab",
+        "contextMenus",
         "storage"
     ],
     "action": {
@@ -16,9 +17,11 @@
             "js": ["content.js"]
         }
     ],
+    "background": {
+        "service_worker": "background.js"
+    },
     "host_permissions": [
         "http://*/*",
-        "https://*/*",
-        "https://api.openai.com/*"
+        "https://*/*"
     ]
 }
