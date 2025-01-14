@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const output = document.getElementById("output");
 
     button.addEventListener("click", () => {
-        output.textContent = "Button Clicked!";
+        chrome.tabs.query({active: true,currentWindow: true}, (tabs) => {
+            const activeTab = tabs[0];
+            chrome.tabs.sendMessage(activeTab.is, { action: "enableDyslexiaMode" });
+        });
+        output.textContent = "Dyslexia Mode Enabled!";
     })
 });
