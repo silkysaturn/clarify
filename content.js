@@ -102,6 +102,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         
         console.log("Reading Mode " + (isDyslexiaMode ? "Enabled!" : "Disabled!"));
         sendResponse({ status: isDyslexiaMode ? "enabled" : "disabled" });
+        return true; // Keep the message channel open for the async response
     } 
     else if (message.action === "showSimplified") {
         showTooltip(message.text);

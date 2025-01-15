@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
@@ -9,7 +9,7 @@ CORS(app)  # Enable CORS for all routes
 
 # Load environment variables
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/simplify', methods=['POST'])
 def simplify_text():
@@ -21,7 +21,7 @@ def simplify_text():
             return jsonify({'error': 'No text provided'}), 400
 
         # Call OpenAI API
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that simplifies complex text. Keep the core meaning but use simpler words and shorter sentences."},
@@ -30,7 +30,7 @@ def simplify_text():
             temperature=0.7
         )
         
-        simplified = response.choices[0].message['content']
+        simplified = response.choices[0].message.content
         return jsonify({"simplified": simplified})
     
     except Exception as e:
@@ -47,7 +47,7 @@ def define_word():
             return jsonify({'error': 'No word provided'}), 400
 
         # Call OpenAI API for definition
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that provides clear, concise definitions for words. Include an example sentence if possible."},
@@ -56,7 +56,7 @@ def define_word():
             temperature=0.7
         )
         
-        definition = response.choices[0].message['content']
+        definition = response.choices[0].message.content
         return jsonify({"definition": definition})
     
     except Exception as e:
