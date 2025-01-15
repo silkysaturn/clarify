@@ -109,4 +109,21 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     else if (message.action === "showError") {
         showTooltip(message.error);
     }
+    else if (message.action === "showDefinition") {
+        showTooltip(message.text);
+    }
+});
+
+// Add double-click handler for quick word definitions
+document.addEventListener('dblclick', function(e) {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+    
+    if (selectedText) {
+        // Send message to background script to get definition
+        chrome.runtime.sendMessage({
+            action: "defineWord",
+            word: selectedText
+        });
+    }
 });
