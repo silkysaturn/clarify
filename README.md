@@ -1,9 +1,16 @@
-<div>
-    <h1>Clarify</h1>
-    <h2>Nosu AI Hackathon Project</h2>
-</div>
+<h1>🔎Clarify</h1> 
 
-<div>
-    <p>Education and Codebuff Tracks</p>
-    <p>Chrome extension for accessible education: AI text simplification, dyslexia support, and interactive definitions.</p>
-</div>
+<h2> A Google Chrome Extension to make the web more accessible! <br> 
+    Developed for the nosu.io AI Hackathon</h2>
+
+* AI text simplification
+* AI definitions and pronunciation guides
+* Dyslexia-friendly mode
+
+  <h2>Tech Stack:</h2>
+  <img width="150px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+  <img width="150px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+  <img width="150px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+  
+          
+          
