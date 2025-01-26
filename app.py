@@ -11,6 +11,21 @@ CORS(app)  # Enable CORS for all routes
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+@app.route('/test', methods=['GET'])
+def test_openai():
+    try:
+        # Simple test completion
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": "Say hello"}
+            ]
+        )
+        return jsonify({"message": "OpenAI connection successful", "response": response.choices[0].message.content})
+    except Exception as e:
+        print(f"OpenAI Error: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/simplify', methods=['POST'])
 def simplify_text():
     try:
@@ -24,7 +39,7 @@ def simplify_text():
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that simplifies complex text. Keep the core meaning but use simpler words and shorter sentences."},
+                {"role": "system", "content": "You are a helpful assistant that simplifies complex text for those who need help with reading comprehension. Keep the core meaning but use simpler words and shorter sentences."},
                 {"role": "user", "content": f"Please simplify this text: {text}"}
             ],
             temperature=0.7
@@ -50,7 +65,7 @@ def define_word():
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that provides clear, concise definitions for words. Include an example sentence if possible."},
+                {"role": "system", "content": "You are a helpful assistant that provides clear, concise definitions for words. Include an example sentence and pronunciation guide if possible."},
                 {"role": "user", "content": f"Please define this word and provide a simple example: {word}"}
             ],
             temperature=0.7
