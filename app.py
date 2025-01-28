@@ -5,16 +5,14 @@ from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
-# Load environment variables
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/test', methods=['GET'])
 def test_openai():
     try:
-        # Simple test completion
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -35,7 +33,6 @@ def simplify_text():
         if not text:
             return jsonify({'error': 'No text provided'}), 400
 
-        # Call OpenAI API
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -61,7 +58,6 @@ def define_word():
         if not word:
             return jsonify({'error': 'No word provided'}), 400
 
-        # Call OpenAI API for definition
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[

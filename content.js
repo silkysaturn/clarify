@@ -1,4 +1,3 @@
-// Inject CSS styles for dyslexia mode and tooltips
 const style = document.createElement("style");
 style.textContent = `
     .dys_mode {
@@ -42,12 +41,9 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Variable to keep track of whether dyslexia mode is enabled
 let isDyslexiaMode = false;
 
-// Function to create and show tooltip
 function showTooltip(text, position) {
-    // Remove any existing tooltips
     const existingTooltip = document.querySelector('.clarify-tooltip');
     if (existingTooltip) {
         existingTooltip.remove();
@@ -68,7 +64,6 @@ function showTooltip(text, position) {
     tooltip.appendChild(closeBtn);
     tooltip.appendChild(content);
     
-    // Position tooltip near the selection
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const rect = range.getBoundingClientRect();
@@ -78,7 +73,6 @@ function showTooltip(text, position) {
     
     document.body.appendChild(tooltip);
     
-    // Close tooltip when clicking outside
     document.addEventListener('click', function closeTooltip(e) {
         if (!tooltip.contains(e.target)) {
             tooltip.remove();
@@ -87,7 +81,6 @@ function showTooltip(text, position) {
     });
 }
 
-// Listen for messages from background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "enableDyslexiaMode") {
         isDyslexiaMode = !isDyslexiaMode;
@@ -102,7 +95,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         
         console.log("Reading Mode " + (isDyslexiaMode ? "Enabled!" : "Disabled!"));
         sendResponse({ status: isDyslexiaMode ? "enabled" : "disabled" });
-        return true; // Keep the message channel open for the async response
+        return true; 
     } 
     else if (message.action === "showSimplified") {
         showTooltip(message.text);
@@ -115,13 +108,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
-// Add double-click handler for quick word definitions
 document.addEventListener('dblclick', function(e) {
     const selection = window.getSelection();
     const selectedText = selection.toString().trim();
     
     if (selectedText) {
-        // Send message to background script to get definition
         chrome.runtime.sendMessage({
             action: "defineWord",
             word: selectedText

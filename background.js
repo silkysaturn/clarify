@@ -1,4 +1,3 @@
-// Create context menu items
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: "simplifyText",
@@ -13,7 +12,6 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
-// Handle context menu clicks
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "simplifyText") {
         const selectedText = info.selectionText;
