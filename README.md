@@ -1,4 +1,4 @@
-<h1>🔎Clarify</h1> 
+<h1>Clarify - Google Chrome Extension</h1> 
 
 <h2> A Google Chrome Extension to make the web more accessible! <br> 
     Developed for the nosu.io AI Hackathon</h2>
